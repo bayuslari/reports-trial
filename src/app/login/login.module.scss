@@ -1,0 +1,76 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.card {
+  width: 100%;
+  max-width: 400px;
+}
+
+.cardHeader {
+  gap: 0.4rem;
+}
+
+.logo {
+  font-size: 1.75rem;
+  margin-bottom: 0.25rem;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.subtitle {
+  font-size: 0.85rem;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.selectFull {
+  width: 100%;
+}
+
+.hint {
+  font-size: 0.8rem;
+  color: var(--muted-foreground);
+  line-height: 1.5;
+  padding: 0.75rem 1rem;
+  background: var(--muted);
+  border-radius: var(--radius-md);
+  margin: 0;
+
+  code {
+    font-size: 0.78rem;
+    background: var(--border);
+    padding: 0.1rem 0.3rem;
+    border-radius: 3px;
+  }
+}
+
+.fullWidth {
+  width: 100%;
+}

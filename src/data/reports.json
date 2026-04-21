@@ -1,0 +1,112 @@
+[
+  {
+    "id": "1",
+    "title": "Q1 2025 Sales Performance Review",
+    "author": "Alice Johnson",
+    "category": "Sales",
+    "status": "published",
+    "createdAt": "2025-03-31",
+    "excerpt": "Comprehensive analysis of Q1 sales metrics, pipeline health, and regional performance across all territories.",
+    "content": "This report covers all major sales KPIs for Q1 2025. Total revenue reached $4.2M, exceeding targets by 12%. The APAC region led growth at 28% YoY, followed by EMEA at 17%. Key deals closed include enterprise contracts with three Fortune 500 companies. Pipeline entering Q2 is at $18M, the strongest in company history. Churn remained below 3%, reflecting improved customer success efforts. Recommendations include doubling down on enterprise outreach and expanding the SDR team in APAC.",
+    "tags": ["sales", "quarterly", "revenue", "performance"]
+  },
+  {
+    "id": "2",
+    "title": "Infrastructure Reliability Incident Report — March 2025",
+    "author": "Bob Martinez",
+    "category": "Engineering",
+    "status": "published",
+    "createdAt": "2025-04-02",
+    "excerpt": "Post-mortem analysis of the March 14 database failover incident, root cause identification, and remediation steps.",
+    "content": "On March 14, 2025 at 02:17 UTC, a cascading failure in the primary database cluster caused 47 minutes of degraded service affecting ~12,000 users. Root cause: a misconfigured connection pool limit combined with a surge in batch job traffic exhausted available connections. Immediate mitigation involved rerouting traffic to the replica and manually killing idle connections. Long-term fixes include automated connection pool tuning, improved batch job scheduling, and enhanced alerting thresholds. All action items are tracked in LINEAR-2201.",
+    "tags": ["engineering", "incident", "reliability", "database"]
+  },
+  {
+    "id": "3",
+    "title": "User Research: Onboarding Flow Friction Points",
+    "author": "Clara Kim",
+    "category": "Product",
+    "status": "published",
+    "createdAt": "2025-03-20",
+    "excerpt": "Qualitative research findings from 24 user interviews identifying key drop-off points in the new user onboarding experience.",
+    "content": "We conducted 24 moderated user interviews across segments: SMB (10), Mid-Market (9), and Enterprise (5). Key findings: 67% of users abandoned the integration setup step citing lack of contextual guidance. The checklist UI tested poorly — users preferred a guided wizard. Email verification added perceived friction with no clear value statement. Recommended changes: replace checklist with a progressive wizard, defer email verification post-first-value, and add inline tooltips to the integration step. Implementing these changes is projected to improve 7-day activation by 22%.",
+    "tags": ["product", "ux", "research", "onboarding"]
+  },
+  {
+    "id": "4",
+    "title": "Marketing Attribution Analysis — H2 2024",
+    "author": "David Chen",
+    "category": "Marketing",
+    "status": "archived",
+    "createdAt": "2025-01-10",
+    "excerpt": "Multi-touch attribution modeling results for H2 2024 campaigns, channel ROI breakdown, and budget reallocation recommendations.",
+    "content": "Using a data-driven multi-touch attribution model across 8 channels, paid search delivered the highest ROI at 4.1x, followed by content marketing at 3.6x. Display advertising underperformed at 0.9x ROI. LinkedIn Ads showed strong assisted conversion contribution (34% of enterprise deals touched LinkedIn). Email nurture sequences contributed to 41% of mid-market closes. Recommended budget shifts: increase paid search by 20%, reallocate display budget to LinkedIn, and invest in SEO content for top-of-funnel. Total H2 pipeline attributed to marketing: $9.8M.",
+    "tags": ["marketing", "attribution", "roi", "campaigns"]
+  },
+  {
+    "id": "5",
+    "title": "Annual Security & Compliance Audit 2024",
+    "author": "Eve Nakamura",
+    "category": "Security",
+    "status": "published",
+    "createdAt": "2025-02-14",
+    "excerpt": "Results of the annual SOC 2 Type II audit preparation, vulnerability scan findings, and compliance remediation roadmap.",
+    "content": "The 2024 security audit identified 3 high-severity, 11 medium-severity, and 28 low-severity findings. High-severity issues included an exposed internal API endpoint, insufficient logging on admin actions, and a dependency with a known CVE (CVSS 8.7). All high-severity items were remediated within 72 hours of discovery. Medium-severity items are tracked with 30-day SLAs. SOC 2 Type II audit is scheduled for Q2 2025; current readiness score is 84%. Key investments needed: secrets rotation automation, improved SIEM alerting, and employee security training refresh.",
+    "tags": ["security", "compliance", "soc2", "audit"]
+  },
+  {
+    "id": "6",
+    "title": "Customer Success Health Score Model v2",
+    "author": "Frank Torres",
+    "category": "Customer Success",
+    "status": "published",
+    "createdAt": "2025-03-05",
+    "excerpt": "Documentation of the revised customer health scoring methodology, feature usage signals, and churn prediction accuracy improvements.",
+    "content": "Version 2 of the health score model incorporates 14 behavioral signals (up from 8 in v1), including feature adoption breadth, support ticket frequency, and executive engagement. Backtesting against 2024 churn data shows the new model achieves 79% precision and 71% recall in identifying at-risk accounts 60 days before churn — an improvement of 31% over v1. Deployment rollout to all 430 accounts is complete. CSMs have reported the new signals are more actionable. Next iteration will incorporate NPS trend data and invoice payment patterns.",
+    "tags": ["customer-success", "churn", "health-score", "analytics"]
+  },
+  {
+    "id": "7",
+    "title": "Engineering Hiring Pipeline — Q1 2025",
+    "author": "Grace Lee",
+    "category": "HR",
+    "status": "draft",
+    "createdAt": "2025-04-05",
+    "excerpt": "Snapshot of current engineering headcount needs, active pipeline, and sourcing strategy for backend and platform roles.",
+    "content": "Current open engineering roles: 2 Senior Backend Engineers, 1 Staff Platform Engineer, 1 Engineering Manager. Active pipeline: 47 candidates across all roles, 8 in final rounds. Top sourcing channels: referrals (38%), LinkedIn (29%), inbound (22%). Time-to-hire average: 43 days for ICs, 61 days for EM. Key challenge: Staff Platform Engineer role has low funnel volume — considering partnering with a specialized recruiting agency. Budget for Q2 sourcing: $45K. Compensation bands were refreshed in February and are now competitive at P75 of market.",
+    "tags": ["hr", "hiring", "engineering", "talent"]
+  },
+  {
+    "id": "8",
+    "title": "Product Roadmap Alignment — Q2 2025",
+    "author": "Henry Walsh",
+    "category": "Product",
+    "status": "published",
+    "createdAt": "2025-04-01",
+    "excerpt": "Cross-functional roadmap priorities for Q2, trade-off decisions, and alignment on success metrics with stakeholders.",
+    "content": "Q2 priorities were finalized after a two-week discovery and alignment process with Sales, CS, and Engineering. The three major themes are: (1) Enterprise-grade permissions and SSO — critical for three pending $200K+ deals. (2) Reporting v2 — top CS request, projected to reduce support load by 15%. (3) Mobile experience improvements — net promoter score data shows mobile NPS is 12 points below desktop. Infrastructure investments include database migration to Postgres 16 and CDN optimization. Scope reductions from original plan: deferred AI suggestions feature to Q3 due to LLM cost constraints.",
+    "tags": ["product", "roadmap", "q2", "strategy"]
+  },
+  {
+    "id": "9",
+    "title": "Financial Forecast — FY2025",
+    "author": "Isabella Ross",
+    "category": "Finance",
+    "status": "published",
+    "createdAt": "2025-01-20",
+    "excerpt": "Full-year 2025 revenue, expense, and headcount forecast with scenario modeling across base, bull, and bear cases.",
+    "content": "Base case FY2025 forecast: $19.2M ARR (38% YoY growth), operating loss of $2.1M, burn rate of $620K/month. Bull case assumes accelerated enterprise conversion and reaches $22.4M ARR. Bear case models elongated sales cycles and macro headwinds, projecting $15.8M ARR. Headcount plan: net +23 FTEs across Engineering (8), GTM (9), and G&A (6). Cash runway at current burn: 22 months. Key risks: pricing sensitivity in SMB segment and potential compression in NRR if product gaps persist. Board review scheduled for April 15.",
+    "tags": ["finance", "forecast", "fy2025", "arr"]
+  },
+  {
+    "id": "10",
+    "title": "Competitive Intelligence Briefing — CRM Market",
+    "author": "James Park",
+    "category": "Strategy",
+    "status": "draft",
+    "createdAt": "2025-04-10",
+    "excerpt": "Analysis of three key competitor product updates, pricing changes, and win/loss trends from Q1 2025 deal reviews.",
+    "content": "Three competitors made notable moves in Q1: Competitor A launched an AI-powered forecasting tool that has emerged in 7 of our last 20 competitive deals. Competitor B cut SMB pricing by 20%, increasing displacement risk. Competitor C was acquired, creating customer uncertainty that is an acquisition opportunity for us. Win rate analysis: overall win rate 54% (up 3pts QoQ), highest in Enterprise at 61%, lowest against Competitor A in mid-market (41%). Battlecard updates have been completed for all three competitors. Recommended sales enablement investment: dedicated competitive intelligence program with a dedicated resource.",
+    "tags": ["strategy", "competitive", "market", "intelligence"]
+  }
+]

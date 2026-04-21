@@ -1,36 +1,99 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Reports Dashboard
+
+A Next.js (App Router) + TypeScript application featuring role-gated reports, server-side search and sort, AI-powered summaries, and a reusable component library.
 
 ## Getting Started
 
-First, run the development server:
-
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000). You will be redirected to `/login` — pick a role (Viewer or Admin) and continue to the reports dashboard.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Features
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Routes
 
-## Learn More
+| Route | Description |
+|---|---|
+| `/` | Redirects to `/reports` |
+| `/login` | Role selection (sets a `role` cookie) |
+| `/reports` | Paginated list of reports with search + sort |
+| `/reports/[id]` | Report detail view with AI summary |
+| `GET /api/reports` | Returns paginated, filtered, sorted report list |
+| `GET /api/reports/[id]` | Returns a single report by ID |
+| `GET /api/reports/[id]/summary` | Returns a mocked AI summary |
 
-To learn more about Next.js, take a look at the following resources:
+### Role-Gated Access (Middleware)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+`src/middleware.ts` intercepts all requests to `/reports/*`. If the `role` cookie is absent or holds an unrecognized value, the user is redirected to `/login?from=<original-path>`. After login, they are returned to the page they tried to access.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Valid roles: `admin`, `viewer`. Both have read access in this demo.
 
-## Deploy on Vercel
+### Search & Sort — via API
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Search and sort are implemented server-side in `GET /api/reports`. The client sends query parameters:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+| Param | Values |
+|---|---|
+| `search` | Free-text (matches title, author, category, tags) |
+| `sortBy` | `title` \| `author` \| `category` \| `createdAt` |
+| `sortOrder` | `asc` \| `desc` |
+| `page` | integer ≥ 1 |
+| `pageSize` | integer 1–50 |
+
+### AI Summary
+
+Each report detail page has a **Generate AI Summary** button. Clicking it calls `GET /api/reports/[id]/summary`, which:
+
+- Simulates ~800–1400 ms latency (realistic API feel)
+- Returns a hand-crafted contextual summary for each of the 10 mock reports
+- Randomly fails ~10% of the time to demonstrate the **error + retry** state
+
+The UI handles three states: loading (spinner), error (message + retry button), and success (styled AI card).
+
+### Reusable Components
+
+| Component | File | Description |
+|---|---|---|
+| `ReportCard` | `src/components/ReportCard/` | Card layout for grid view — links to detail page |
+| `ReportTable` | `src/components/ReportTable/` | Sortable table for list view |
+
+### Styling
+
+All components and pages use `.module.scss` files (no Tailwind). SCSS is compiled via the `sass` package.
+
+## Project Structure
+
+```
+src/
+├── app/
+│   ├── api/reports/
+│   │   ├── route.ts              # GET /api/reports
+│   │   └── [id]/
+│   │       ├── route.ts          # GET /api/reports/[id]
+│   │       └── summary/route.ts  # GET /api/reports/[id]/summary
+│   ├── login/
+│   │   ├── page.tsx
+│   │   └── login.module.scss
+│   ├── reports/
+│   │   ├── page.tsx
+│   │   ├── reports.module.scss
+│   │   └── [id]/
+│   │       ├── page.tsx
+│   │       └── report-detail.module.scss
+│   ├── globals.css
+│   ├── layout.tsx
+│   └── page.tsx
+├── components/
+│   ├── ReportCard/
+│   └── ReportTable/
+├── data/reports.json             # 10 mock reports
+├── middleware.ts                 # Role-gating
+└── types/report.ts               # Shared TypeScript types
+```
+
+## AI Tools Used
+
+- **Claude (claude-sonnet-4-6 via Claude Code)** — used to build the entire application. Prompted to plan the architecture, generate all source files (types, API routes, components, pages, middleware, styles), verify the build, and write this README. Claude Code's agentic tool-use (file writing, shell commands, build verification) made it possible to go from an empty directory to a fully working, building application in a single session.

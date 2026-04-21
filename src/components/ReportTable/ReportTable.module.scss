@@ -1,0 +1,42 @@
+.wrapper {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+}
+
+.sortableHead {
+  cursor: pointer;
+  user-select: none;
+  white-space: nowrap;
+
+  &:hover {
+    background: var(--muted);
+  }
+}
+
+.sortIcon {
+  display: inline-block;
+  margin-left: 0.3rem;
+  opacity: 0.4;
+  font-style: normal;
+
+  &.active {
+    opacity: 1;
+    color: var(--primary);
+  }
+}
+
+.clickableRow {
+  cursor: pointer;
+}
+
+.titleCell {
+  font-weight: 500;
+  max-width: 320px;
+}
+
+.empty {
+  text-align: center;
+  padding: 3rem;
+  color: var(--muted-foreground);
+}
