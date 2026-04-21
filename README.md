@@ -5,8 +5,8 @@ A Next.js (App Router) + TypeScript application featuring role-gated reports, se
 ## Getting Started
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000). You will be redirected to `/login` — pick a role (Viewer or Admin) and continue to the reports dashboard.
@@ -27,7 +27,7 @@ Open [http://localhost:3000](http://localhost:3000). You will be redirected to `
 
 ### Role-Gated Access (Middleware)
 
-`src/middleware.ts` intercepts all requests to `/reports/*`. If the `role` cookie is absent or holds an unrecognized value, the user is redirected to `/login?from=<original-path>`. After login, they are returned to the page they tried to access.
+`src/proxy.ts` intercepts all requests to `/reports/*`. If the `role` cookie is absent or holds an unrecognized value, the user is redirected to `/login?from=<original-path>`. After login, they are returned to the page they tried to access.
 
 Valid roles: `admin`, `viewer`. Both have read access in this demo.
 
@@ -62,7 +62,7 @@ The UI handles three states: loading (spinner), error (message + retry button), 
 
 ### Styling
 
-All components and pages use `.module.scss` files (no Tailwind). SCSS is compiled via the `sass` package.
+Layout and structure use `.module.scss` files compiled via the `sass` package. Interactive UI primitives (buttons, inputs, selects, badges, cards, tables) use [shadcn/ui](https://ui.shadcn.com/) components built on Radix/Base UI with Tailwind v4 CSS variables for theming.
 
 ## Project Structure
 
@@ -78,6 +78,7 @@ src/
 │   │   ├── page.tsx
 │   │   └── login.module.scss
 │   ├── reports/
+│   │   ├── layout.tsx            # Server component — reads role cookie, renders Navbar
 │   │   ├── page.tsx
 │   │   ├── reports.module.scss
 │   │   └── [id]/
@@ -87,10 +88,13 @@ src/
 │   ├── layout.tsx
 │   └── page.tsx
 ├── components/
-│   ├── ReportCard/
-│   └── ReportTable/
+│   ├── Navbar/                   # Role badge + logout
+│   ├── ReportCard/               # Grid view card
+│   ├── ReportTable/              # List view sortable table
+│   └── ui/                       # shadcn/ui primitives
 ├── data/reports.json             # 10 mock reports
-├── middleware.ts                 # Role-gating
+├── lib/utils.ts                  # cn() utility
+├── proxy.ts                      # Role-gating (Next.js 16 middleware)
 └── types/report.ts               # Shared TypeScript types
 ```
 
